@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    *{
+        font-family: 'Shantell Sans', cursive;
+    }
+    .list-group-item{
+        border: none !important;
+    }
+    .list-group-item.active{
+        color: black !important;
+        background-color: white !important;
+        /* border-color:#e9ecef !important; */
+    }
+    .list-group-item-action:focus, .list-group-item-action:hover{
+        background-color: white !important;
+    }
+    .vertical-center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cetnerByPosition{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        /* border: 2px solid red; */
+    }
+</style>
+<body>
+
+
+    <div class="grid row vh-100 m-0">
+        <div class="col-2 border-end vh-100 vertical-center">
+            <div class="list-group text-center">
+                <a class="list-group-item list-group-item-action active py-3" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
+
+                <a class="list-group-item list-group-item-action py-3" id="list-vacancy-list" data-bs-toggle="list" href="#list-vacancy" role="tab" aria-controls="list-vacancy">Vacancy Page</a>
+
+                <a class="list-group-item list-group-item-action py-3" id="list-applicants-list" data-bs-toggle="list" href="#list-applicants" role="tab" aria-controls="list-applicants">Applicants Data</a>
+
+                <a class="list-group-item list-group-item-action py-3" id="list-scheduled-applicants-list" data-bs-toggle="list" 
+                href="#list-scheduled-applicants" role="tab" aria-controls="list-scheduled-applicants">Scheduled Applicants</a>
+
+                <a class="list-group-item list-group-item-action py-3" id="list-final-applicants-list" data-bs-toggle="list" href="#list-final-applicants" role="tab" aria-controls="list-final-applicants">Hired Applicants</a>
+            </div>
+        </div>
+
+        <div class="col-10">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="welcome">
+                        <div class="intro cetnerByPosition">
+                            <h4 class="text-center py-3">Weclome To HRMS System</h4>
+                            <p class="text-center py-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi ratione ab dolores quas pariatur ea sed earum quis modi maiores? Molestiae, ipsum laboriosam.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-vacancy" role="tabpanel" aria-labelledby="list-vacancy-list">
+                    <div id="vacancy-page" class="py-4">
+                        <button class="btn btn-outline-primary float-end my-4" onclick="create()">Create Vacancies</button>
+                        <div class="mainTable py-5">
+                            <div class="clearfix"></div>
+        
+                            <h5 class="text-center text-uppercase ">Current Vacancies</h5>
+        
+                            <table class="table table-hover my-5" id="table">
+        
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-applicants" role="tabpanel" aria-labelledby="list-applicants-list">
+                    <div id="applicants-page" class="py-4">
+
+                        <h4 class="text-center py-4">Details of Applicants</h4>
+                        <table id="applicantsTable" class="table table-hover my-5">
+                            
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-scheduled-applicants" role="tabpanel" aria-labelledby="list-scheduled-applicants-list">
+                    <div id="scheduled-applicants-page" class="py-4">
+                        <h4 class="text-center py-4">Scheduled Applicants</h4>
+                        <table id="scheduledApplicants" class="table table-hover my-5">
+                            
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-final-applicants" role="tabpanel" aria-labelledby="list-final-applicants-list">
+                    <div id="hired-applicants-page" class="py-4">
+                        <h4 class="text-center py-4">Hired Applicants</h4>
+                        <table id="hiredApplicants" class="table table-hover my-5">
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- modals  -->
+        <div id="createVacModal">
+    
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Data of Vacancy</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="role" class="col-form-label">Role:</label>
+                                    <input type="text" class="form-control" id="role">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experience" class="col-form-label">Experience:</label>
+                                    <input type="text" class="form-control" id="experience">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="qualification" class="col-form-label">Qualification:</label>
+                                    <input type="text" class="form-control" id="qualification">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" id="description"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="openings" class="col-form-label">Openings:</label>
+                                    <input type="number" class="form-control" id="openings">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="createVac">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <!-- Modal -->
+
+        <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Data of Vacancy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <!-- <span class="input-group-text">Date and Time</span> -->
+                        <input type="date" aria-label="Date" class="form-control" id="date">
+                        <input type="time" aria-label="Time" class="form-control" id="time">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="scheduleit">Create</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Review Applicant</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group py-2">
+                        <input type="text" class="form-control" placeholder="Score of Applicant" id="score">
+                        <span class="input-group-text">100</span>
+                    </div>
+
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="comments" style="height: 100px"></textarea>
+                        <label for="comments">Comments</label>
+                    </div>
+                    <div class="form-check form-switch py-2">
+                        <input class="form-check-input" type="checkbox" id="pass">
+                        <label class="form-check-label" for="pass">Pass</label>
+                    </div>
+                </div>            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="finalize">Finalize</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script>var exports = {};</script>
+
+        <script src="../build/index.js"></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

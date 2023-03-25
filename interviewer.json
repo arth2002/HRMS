@@ -1,0 +1,19 @@
+{
+    "interviewer":[
+        {
+            "id":1,
+            "name":"John Cena",
+            "position":"Software Developer"
+        },
+        {
+            "id":2,
+            "name":"Brock Lesnar",
+            "position":"Software Developer"
+        },
+        {
+            "id":3,
+            "name":"Dave Bautista",
+            "position":"QA"
+        }
+    ]
+}

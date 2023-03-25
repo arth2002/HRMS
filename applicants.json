@@ -1,0 +1,31 @@
+{
+    "applicants":[
+        {
+            "id":1,
+            "name":"Eren Yeager",
+            "email":"eren@gmail.com",
+            "contact":"9845256514",
+            "state":"Gujarat",
+            "city":"Ahmedabad",
+            "position":"Software Developer"
+        },
+        {
+            "id":2,
+            "name":"Mikasa Ackerman",
+            "email":"eren@gmail.com",
+            "contact":"9845256514",
+            "state":"Gujarat",
+            "city":"Ahmedabad",
+            "position":"Software Developer"
+        },
+        {
+            "id":3,
+            "name":"Erwin Smith",
+            "email":"eren@gmail.com",
+            "contact":"9845256514",
+            "state":"Gujarat",
+            "city":"Ahmedabad",
+            "position":"Software Developer"
+        }
+    ]
+}
